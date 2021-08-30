@@ -43,14 +43,14 @@ text-transform: none;
     background: #99A43A; }
 .btn-hit {
         color: rgb(0, 0, 0); font-size: 25px; line-height: 30px; padding: 15px; border-radius: 50px; font-family: Impact, Charcoal, sans-serif; font-weight: 700; text-decoration: none solid rgb(68, 68, 68); font-style: normal; font-variant: normal; text-transform: none; background-image: linear-gradient(to right, rgb(153, 164, 58) 0%, rgb(81, 188, 70) 50%, rgb(153, 164, 58) 100%); box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px; border: 2px solid rgb(28, 110, 164); display: inline-block;}
-        .btn-deal:hover {
+        .btn-hit:hover {
         background: #99A43A; }
-        .btn-deal:active {
+        .btn-hit:active {
         background: #99A43A; }
 .btn-stay {
             color: rgb(0, 0, 0); font-size: 25px; line-height: 30px; padding: 15px; border-radius: 50px; font-family: Impact, Charcoal, sans-serif; font-weight: 700; text-decoration: none solid rgb(68, 68, 68); font-style: normal; font-variant: normal; text-transform: none; background-image: linear-gradient(to right, rgb(153, 164, 58) 0%, rgb(81, 188, 70) 50%, rgb(153, 164, 58) 100%); box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px; border: 2px solid rgb(28, 110, 164); display: inline-block;}
-            .btn-deal:hover {
+            .btn-stay:hover {
             background: #99A43A; }
-            .btn-deal:active {
+            .btn-stay:active {
             background: #99A43A; }   
 

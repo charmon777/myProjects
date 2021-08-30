@@ -5,9 +5,12 @@ const hand = document.querySelector(".cards");
 const dealerHand = document.querySelector(".dealer-hand");
 const card = [2,3,4,5,6,7,8,9,10,"J","Q","K","A"];
 let cards = [];
-let trueCard= cards;
+let dealerCards = [];
+// let trueCard= cards;
 let count = 0;
 let displayHand = [`Cards:`]
+let playerCount = 0;
+let dealerCount = 0; 
 
 
 //Deal a single card
@@ -28,38 +31,42 @@ function displayHandUpdate(){
       
 }
 //set count
-function setCount(){
-    trueCard = cards;
-    for(let i=0; i<cards.length;i++){
-    if (cards[i] === "J" ||
-    cards[i] === "Q" ||
-    cards[i] === "K"){
+function setCount(k){ 
+    count = 0;
+    let trueCard = [...k];
+    for(let i=0; i<k.length;i++){
+    if (k[i] === "J" ||
+    k[i] === "Q" ||
+    k[i] === "K"){
     trueCard[i] = 10;
-}else if(cards[i] === "A"){
+}else if(k[i] === "A"){
     trueCard[i] = 11;
 }};
     count = trueCard.reduce((a,b) => a+b,0);
-    
+
     if (count>21 && trueCard.includes(11) ){
         let index = trueCard.indexOf(11);
         trueCard[index] = 1;
     }
     count = trueCard.reduce((a,b) => a+b,0);
+    playerCount = count;
+    dealerCount = count;
     
     
 }
 
 //Dealer hand function
 function dealerHandComp(){
+    cards=[];
     dealCard()
     dealCard()
-    setCount()
-    while (count<17){
+    setCount(cards)
+    while (dealerCount<17){
         dealCard()
-        setCount()
+        setCount(cards)
     }
-    console.log(cards);
-    return count;
+    
+    return dealerCount;
 }
 
 
@@ -75,33 +82,39 @@ btns.forEach(function(btn){
         dealCard();
         dealCard();
         displayHandUpdate();
-        setCount();
-        handValue.textContent = count;
-        if(count<21){
+        setCount(cards);
+        
+        handValue.textContent = playerCount;
+        if(playerCount<21){
         result.textContent = "Hit or Stay?"}
-        else if(count === 21){
+        else if(playerCount === 21){
          result.textContent = "Blackjack!!";}
   
      }
      if(value.contains("btn-hit")){
         dealCard();
         displayHandUpdate();
-        setCount();
-        handValue.textContent = count;
-        if (count>21){
+        setCount(cards);
+        
+        handValue.textContent = playerCount;
+        if (playerCount>21){
             result.textContent = "Hand Lost"; 
                       
-        }else if (count===21){
+        }else if (playerCount===21){
             result.textContent = "Blackjack!!";
         }console.log(cards)
     }
     if(value.contains("btn-stay")){
         
-        if (count>21){
+        if (playerCount>21){
             result.textContent = "Hand Lost"; 
                       
-        }if(count<21){
-        result.textContent = count}
+        }if(playerCount<21){
+        result.textContent = playerCount
+        dealerHandComp();
+        dealerHand.textContent = dealerCount;   
+    }
+
 
         
         
